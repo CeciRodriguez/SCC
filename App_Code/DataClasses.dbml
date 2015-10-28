@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="scc" Class="DataClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=C-G;Initial Catalog=scc;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="sccConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Cliente" Member="Cliente">
+    <Type Name="Cliente">
+      <Column Name="idCliente" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="nomCliente" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="apCliente" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="amCliente" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="idSexo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="fechaNac" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="numIFE" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="domicilio" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="num" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="descripCasa" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="telefono" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="telefonoAlt" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Association Name="Cliente_solicitud" Member="solicitud" ThisKey="idCliente" OtherKey="idCliente" Type="solicitud" />
+      <Association Name="sexo_Cliente" Member="sexo" ThisKey="idSexo" OtherKey="idSexo" Type="sexo" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.modalidad" Member="modalidad">
+    <Type Name="modalidad">
+      <Column Name="idModalidad" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="descripcion" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="modalidad_solicitud" Member="solicitud" ThisKey="idModalidad" OtherKey="idModalidad" Type="solicitud" />
+    </Type>
+  </Table>
+  <Table Name="dbo.sesion" Member="sesion">
+    <Type Name="sesion">
+      <Column Name="idSesion" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="usuario" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="contrasenia" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.sexo" Member="sexo">
+    <Type Name="sexo">
+      <Column Name="idSexo" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="descripcion" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Association Name="sexo_Cliente" Member="Cliente" ThisKey="idSexo" OtherKey="idSexo" Type="Cliente" />
+    </Type>
+  </Table>
+  <Table Name="dbo.solicitud" Member="solicitud">
+    <Type Name="solicitud">
+      <Column Name="idSolicitud" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="idCliente" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="cSolicitada" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="idModalidad" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="fechaInicio" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="fechaFin" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ingresoMensual" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="gastoMensual" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="descripcionCredito" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="descripcionGarantias" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="montoValuado" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="creditoMaximo" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="estatus" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="Cliente_solicitud" Member="Cliente" ThisKey="idCliente" OtherKey="idCliente" Type="Cliente" IsForeignKey="true" />
+      <Association Name="modalidad_solicitud" Member="modalidad" ThisKey="idModalidad" OtherKey="idModalidad" Type="modalidad" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>
