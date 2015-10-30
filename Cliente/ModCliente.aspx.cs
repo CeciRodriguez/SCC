@@ -76,12 +76,6 @@ public partial class Cliente_ModCliente : System.Web.UI.Page
                                       select a
                                      ).Single();//solo un dato
 
-                obj_Cliente.nomCliente = txt_nameM.Text.Trim();
-                obj_Cliente.apCliente = txt_appM.Text.Trim();
-                obj_Cliente.amCliente = txt_apmM.Text.Trim();
-                obj_Cliente.idSexo = Convert.ToByte(txt_sexoM.Text.Trim()); // como en la base es tiyint y se toma de una caja de txt se debe de convertir el dato
-                obj_Cliente.fechaNac = txt_fnM.Text.Trim();
-                obj_Cliente.numIFE = txt_IFEM.Text.Trim();
                 obj_Cliente.domicilio = txt_DomM.Text.Trim();
                 obj_Cliente.num = txt_NumM.Text.Trim();
                 obj_Cliente.descripCasa = txt_casaM.Text.Trim();
@@ -108,6 +102,7 @@ public partial class Cliente_ModCliente : System.Web.UI.Page
         txt_casaM.Text = "";
         txt_telM.Text = "";
         txt_telaM.Text = "";
+        Response.Redirect("ListaClientes.aspx");
     }
 
     //Validacion
