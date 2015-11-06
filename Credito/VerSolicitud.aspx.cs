@@ -37,5 +37,33 @@ public partial class Credito_VerSolicitud : System.Web.UI.Page
         {
             lbl_Mensaje.Text = "ERROR - " + ex.Message.ToString();
         }
+
+        try
+        {
+            //REalizar la consulta con link
+            solicitud obj_Solicitud = (
+                                  from a in scc.solicitud
+                                  where a.idCliente == Convert.ToInt32(idCliente)
+                                  select a
+                                 ).Single();//solo un dato
+            //si encuentra ese cliente  a las cajas de txt se les asignan los valores
+            txt_cSolicitada.Text = Convert.ToString(obj_Solicitud.cSolicitada);
+            txt_modalidad.Text = Convert.ToString(obj_Solicitud.idModalidad);
+            txt_fInicio.Text = obj_Solicitud.fechaInicio;
+            txt_fFin.Text = obj_Solicitud.fechaFin;
+            txt_ingresoMe.Text = Convert.ToString(obj_Solicitud.ingresoMensual);
+            txt_gastoMens.Text = Convert.ToString(obj_Solicitud.gastoMensual);
+            txt_desc.Text = obj_Solicitud.descripcionCredito;
+            txt_garantias.Text = obj_Solicitud.descripcionGarantias;
+            txt_montoVa.Text = Convert.ToString(obj_Solicitud.montoValuado);
+            txt_credMax.Text = Convert.ToString(obj_Solicitud.creditoMaximo);
+            txt_estatus.Text = obj_Solicitud.estatus;
+
+        }
+        catch (Exception ex)
+        {
+            lbl_Mensaje.Text = "ERROR - " + ex.Message.ToString();
+        }
+
     }
 }

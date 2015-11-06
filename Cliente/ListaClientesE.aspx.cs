@@ -5,9 +5,9 @@ using System.Web;
 using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-public partial class Cliente_ListaClientes : System.Web.UI.Page
-{
 
+public partial class Cliente_ListaClientesE : System.Web.UI.Page
+{
     public string idCliente;
 
     public static string[] ARRAYLISTADO;
@@ -19,8 +19,8 @@ public partial class Cliente_ListaClientes : System.Web.UI.Page
 
         #region Inicializa lISTADO
         /******************************************VALIDADOS*****************************************/
-        ARRAYLISTADO = new string[] { "Nombre", "Apellido paterno", "Apellido materno", "IFE","Modificar","Solicitud","" };
-        QUERYLISTADO = "select clie.nomCliente, clie.apCliente, clie.amCliente, clie.numIFE, '<a href=\"ModCliente.aspx?idCliente='+convert(varchar,clie.idCliente)+'\">'+'Click aqui','<a href=\"../Credito/Solicitud.aspx?idCliente='+convert(varchar,clie.idCliente)+'\">'+'Crear','<a href=\"../Credito/VerSolicitud.aspx?idCliente='+convert(varchar,clie.idCliente)+'\">'+'Ver' " +
+        ARRAYLISTADO = new string[] { "Nombre", "Apellido paterno", "Apellido materno", "IFE", "Estado de cuenta"};
+        QUERYLISTADO = "select clie.nomCliente, clie.apCliente, clie.amCliente, clie.numIFE, '<a href=\"EStadoCuenta.aspx?idCliente='+convert(varchar,clie.idCliente)+'\">'+'Click aqui' " +
             " from cliente clie ";
 
         MuestraResultados resultados = new MuestraResultados();
@@ -30,9 +30,7 @@ public partial class Cliente_ListaClientes : System.Web.UI.Page
         /********************************************************************************************/
         #endregion
 
-
     }
-
     #region Listado
     [WebMethod]
     public static string ConstruirListado()

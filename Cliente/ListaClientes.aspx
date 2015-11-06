@@ -297,7 +297,7 @@
                         <ul>
                             <li><a href="Cliente.aspx">Registro</a></li>
                             <li><a href="ListaClientes.aspx">Ver clientes</a></li>
-                            <li><a href='#'>Estados de cuenta</a></li>
+                            <li><a href="EStadoCuenta.aspx">Estados de cuenta</a></li>
                         </ul>
                     </li>
                     <li><a href='#'>Créditos</a>

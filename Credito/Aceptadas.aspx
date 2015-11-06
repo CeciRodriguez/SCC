@@ -298,7 +298,7 @@ CodeFile="Aceptadas.aspx.cs" Inherits="Credito_Aceptadas" %>
                         <ul>
                             <li><a href="../Cliente/Cliente.aspx">Registro</a></li>
                             <li><a href="../Cliente/ListaClientes.aspx">Ver clientes</a></li>
-                            <li><a href='#'>Estados de cuenta</a></li>
+                            <li><a href="../Cliente/EStadoCuenta.aspx">Estados de cuenta</a></li>
                         </ul>
                     </li>
                     <li><a href='#'>Créditos</a>

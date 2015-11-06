@@ -289,7 +289,7 @@
 	    $(this).removeClass("ui-state-hover");
 	}
 );
-</script>
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="Server">
     <div>
@@ -300,7 +300,7 @@
                         <ul>
                             <li><a href="Cliente.aspx">Registro</a></li>
                             <li><a href="ListaClientes.aspx">Ver clientes</a></li>
-                            <li><a href='#'>Estados de cuenta</a></li>
+                            <li><a href="EStadoCuenta.aspx">Estados de cuenta</a></li>
                         </ul>
                     </li>
                     <li><a href='#'>Créditos</a>
@@ -320,13 +320,11 @@
                         </ul>
                     </li>
                     <li><a href='#'>Contactos</a></li>
-                    <li><a href="#" id="dialog-link" class="ui-icon-calculator">
+                   <li><a href="#" id="dialog-link" class="ui-icon-calculator">
                 <span class="ui-icon-calculator"></span><img src="../Imagenes/calculadora.png" width="20px"/> </a></li>
-
                 </ul>
             </div>
             <table style="width: 100%;">
-                <caption>
                     <br />
                     <tr>
                         <td align="right">
@@ -486,11 +484,10 @@
                         <td class="style3">
                         </td>
                     </tr>
-                </caption>
             </table>
         </asp:Panel>
     </div>
-    <!-- ui-dialog -->
+       <!-- ui-dialog -->
     <div id="dialog" title="Calculadora Emergente" class="calculadora">
         <form action="#" id="calculadora">
         <p id="textoPantalla">
@@ -530,6 +527,7 @@
         </p>
         </form>
     </div>
+
     <script>
 
         $("#button").button();

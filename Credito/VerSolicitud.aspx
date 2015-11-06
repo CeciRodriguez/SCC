@@ -296,7 +296,7 @@
                         <ul>
                             <li><a href="../Cliente/Cliente.aspx">Registro</a></li>
                             <li><a href="../Cliente/ListaClientes.aspx">Ver clientes</a></li>
-                            <li><a href='#'>Estados de cuenta</a></li>
+                            <li><a href="../Cliente/EStadoCuenta.aspx">Estados de cuenta</a></li>
                         </ul>
                     </li>
                     <li><a href='#'>Créditos</a>
@@ -453,6 +453,21 @@
                     <td>
                         <br />
                         <asp:TextBox ID="txt_credMax" runat="server" CssClass="form-control" Height="20px"
+                            MaxLength="50" Width="149px" disabled="true"></asp:TextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right">
+                    </td>
+                    <td>
+                    </td>
+                    <td align="right">
+                        <br />
+                        Estatus:
+                    </td>
+                    <td>
+                        <br />
+                        <asp:TextBox ID="txt_estatus" runat="server" CssClass="form-control" Height="20px"
                             MaxLength="50" Width="149px" disabled="true"></asp:TextBox>
                     </td>
                 </tr>

@@ -297,7 +297,7 @@
                         <ul>
                             <li><a href="Cliente.aspx">Registro</a></li>
                             <li><a href="ListaClientes.aspx">Ver clientes</a></li>
-                            <li><a href='#'>Estados de cuenta</a></li>
+                            <li><a href="EStadoCuenta.aspx">Estados de cuenta</a></li>
                         </ul>
                     </li>
                     <li><a href='#'>Créditos</a>
@@ -367,7 +367,7 @@
                     </td>
                     <td>
                         <asp:DropDownList ID="txt_sexoM" runat="server" DataSourceID="SqlDataSource1" DataTextField="descripcion"
-                            DataValueField="idSexo" CssClass="form-control" Width="175px">
+                            DataValueField="idSexo" CssClass="form-control" Width="175px" disabled="true">
                         </asp:DropDownList>
                         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:sccConnectionString1 %>"
                             SelectCommand="SELECT [descripcion], [idSexo] FROM [sexo]"></asp:SqlDataSource>
