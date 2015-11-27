@@ -14,6 +14,7 @@
       <Column Name="descripCasa" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Column Name="telefono" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
       <Column Name="telefonoAlt" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Association Name="Cliente_pagos" Member="pagos" ThisKey="idCliente" OtherKey="idCliente" Type="pagos" />
       <Association Name="Cliente_solicitud" Member="solicitud" ThisKey="idCliente" OtherKey="idCliente" Type="solicitud" />
       <Association Name="sexo_Cliente" Member="sexo" ThisKey="idSexo" OtherKey="idSexo" Type="sexo" IsForeignKey="true" />
     </Type>
@@ -23,6 +24,38 @@
       <Column Name="idModalidad" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="descripcion" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Association Name="modalidad_solicitud" Member="solicitud" ThisKey="idModalidad" OtherKey="idModalidad" Type="solicitud" />
+    </Type>
+  </Table>
+  <Table Name="dbo.pagos" Member="pagos">
+    <Type Name="pagos">
+      <Column Name="idPagos" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="idCliente" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="p1" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="p2" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="p3" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="p4" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="p5" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="p6" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="p7" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="p8" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="p9" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="p10" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="p11" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="p12" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="p13" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="p14" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="p15" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="p16" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="p17" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="p18" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="p19" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="p20" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="p21" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="p22" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="p23" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="p24" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="p25" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Cliente_pagos" Member="Cliente" ThisKey="idCliente" OtherKey="idCliente" Type="Cliente" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.sesion" Member="sesion">

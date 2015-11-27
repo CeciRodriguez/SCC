@@ -45,4 +45,13 @@ public class MuestraResultados
         return this.Tabla;
     }
 
+    public string ConstruyeListadoE()
+    {
+
+        Tablas generarTabla = new Tablas();
+        this.Tabla = generarTabla.contruirTablaGen(this.Query, "ListadoEstado", this.NomColumnas);
+
+        return this.Tabla;
+    }
+
 }

@@ -35,7 +35,7 @@ public partial class Credito_VerSolicitud : System.Web.UI.Page
         }
         catch (Exception ex)
         {
-            lbl_Mensaje.Text = "ERROR - " + ex.Message.ToString();
+            lbl_Mensaje.Text = "El cliente aún no tiene una solicitud y/o " + ex.Message.ToString();
         }
 
         try

@@ -42,6 +42,7 @@ public partial class Cliente_ModCliente : System.Web.UI.Page
             txt_appM.Text = obj_Cliente.apCliente;
             txt_apmM.Text = obj_Cliente.amCliente;
             txt_sexoM.Text = obj_Cliente.idSexo.ToString();
+           // obj_Cliente.fechaNac = txt_fn.SelectedDate.ToShortDateString();
             txt_fnM.Text = obj_Cliente.fechaNac;
             txt_IFEM.Text = obj_Cliente.numIFE;
             txt_DomM.Text = obj_Cliente.domicilio;
@@ -85,6 +86,7 @@ public partial class Cliente_ModCliente : System.Web.UI.Page
                 scc.SubmitChanges();
 
                 lbl_Mensaje.Text = "El cliente se modificó correctamente";
+                Response.Redirect("ListaClientes.aspx");
             }
         }
         catch (Exception ex)
@@ -102,7 +104,7 @@ public partial class Cliente_ModCliente : System.Web.UI.Page
         txt_casaM.Text = "";
         txt_telM.Text = "";
         txt_telaM.Text = "";
-        Response.Redirect("ListaClientes.aspx");
+        
     }
 
     //Validacion
@@ -136,8 +138,6 @@ public partial class Cliente_ModCliente : System.Web.UI.Page
         result += valdidaRegxp(regexpDom, lblDom, "El domicilio no puede ir vacio y debe comenzar con mayúscula", txt_DomM.Text);
 
         result += valdidaRegxp(regexpNumDom, lblNum, "El numero de domicilio no puede ir vacio, máximo 4 dígitos", txt_NumM.Text);
-
-        result += valdidaRegxp(regexpSenPar, lblCasa, "Las señas particulares de la casa no pueden ir vacio", txt_casaM.Text);
 
         result += valdidaRegxp(regexpTel, lblTel, "El numero de teléfono no puede ir vacio y contiene 10 dígitos", txt_telM.Text);
 

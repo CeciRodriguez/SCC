@@ -296,7 +296,7 @@
                         <ul>
                             <li><a href="Cliente.aspx">Registro</a></li>
                             <li><a href="ListaClientes.aspx">Ver clientes</a></li>
-                            <li><a href="EStadoCuenta.aspx">Estados de cuenta</a></li>
+                            <li><a href="ListaClientesE.aspx">Estados de cuenta</a></li>
                         </ul>
                     </li>
                     <li><a href='#'>Créditos</a>
@@ -309,13 +309,13 @@
                             </li>
                         </ul>
                     </li>
-                    <li><a href='#'>Balance</a>
+                    <li><a href='#'>Documentos</a>
                         <ul>
-                            <li><a href='#'>General</a></li>
-                            <li><a href='#'>Mensual</a></li>
+                            <li><a href="../ReporteSCC/ListaClienteSCC.aspx">Clientes</a></li>
+                            <li><a href="../Credito/Formatos.aspx">Garantías y Pagaré</a></li>
                         </ul>
                     </li>
-                    <li><a href='#'>Contactos</a></li>
+                    <li><a href="../Balance/Balance.aspx">Balance</a></li>
                     <li><a href="#" id="dialog-link" class="ui-icon-calculator">
                 <span class="ui-icon-calculator"></span><img src="../Imagenes/calculadora.png" width="20px"/> </a></li>
 

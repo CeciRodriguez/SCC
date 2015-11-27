@@ -1,22 +1,27 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage1.master" AutoEventWireup="true"
-    CodeFile="Solicitud.aspx.cs" Inherits="Credito_Solicitud" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage1.master" AutoEventWireup="true"
+    CodeFile="Balance.aspx.cs" Inherits="Balance_Balance" %>
+
+<%@ Register assembly="System.Web.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" namespace="System.Web.UI.DataVisualization.Charting" tagprefix="asp" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="Server">
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+     <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="../Styles/Estilo.css" rel="stylesheet" type="text/css" />
     <link href="../Bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
     <link href="../Styles/menu.css" rel="stylesheet" type="text/css" />
     <link href="../Styles/styles.css" rel="stylesheet" type="text/css" />
+    <link href="../Styles/jquery-ui.css" rel="stylesheet" type="text/css" />
     <script src="../js/jquery-latest.min.js" type="text/javascript"></script>
     <script src="../js/script.js" type="text/javascript"></script>
-    <!-- <script src="../js/Cliente.js" type="text/javascript"></script> -->
-    <script src="../js/jquery-ui.js" type="text/javascript"></script>
     <script src="../js/script.js" type="text/javascript"></script>
+    <script src="../js/jquery-ui.js" type="text/javascript"></script>
+    <script src="../js/calendario.js" type="text/javascript"></script>
+    <script src="../js/jquery.js" type="text/javascript"></script>
     <script src="../js/DataTable.js" type="text/javascript"></script>
     <script src="../js/dataTable-es.js" type="text/javascript"></script>
     <script src="../js/jquery.dataTables.min.js" type="text/javascript"></script>
+    <script src="../js/Balance.js" type="text/javascript"></script>
     <style>
 	body{
 		font: 12px "Trebuchet MS", sans-serif;
@@ -288,6 +293,7 @@
 );
 </script>
 </asp:Content>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="Server">
     <div>
         <asp:Panel ID="Panel1" runat="server" BackColor="#ffffff" CssClass="panel">
@@ -302,197 +308,72 @@
                     </li>
                     <li><a href='#'>Créditos</a>
                         <ul>
-                            <li><a href="Solicitud.aspx">Solicitudes</a>
+                            <li><a href='#'>Solicitudes</a>
                                 <ul>
-                                   <li><a href="Aceptadas.aspx">Aceptadas</a></li>
-                                    <li><a href="Rechazadas.aspx">Rechazadas</a></li>
+                                    <li><a href="../Credito/Aceptadas.aspx">Aceptadas</a></li>
+                                    <li><a href="../Credito/Rechazadas.aspx">Rechazadas</a></li>
                                 </ul>
                             </li>
                         </ul>
                     </li>
-                   <li><a href='#'>Documentos</a>
+                    <li><a href='#'>Documentos</a>
                         <ul>
                             <li><a href="../ReporteSCC/ListaClienteSCC.aspx">Clientes</a></li>
-                            <li><a href="Formatos.aspx">Garantías y Pagaré</a></li>
+                            <li><a href="../Credito/Formatos.aspx">Garantías y Pagaré</a></li>
                         </ul>
                     </li>
-                    <li><a href="../Balance/Balance.aspx">Balance</a></li>
-                    <li><a href="#" id="dialog-link" class="ui-icon-calculator">
-                <span class="ui-icon-calculator"></span><img src="../Imagenes/calculadora.png" width="20px"/> </a></li>
-
+                    <li><a href="Balance.aspx">Balance</a></li>
+                   <li><a href="#" id="dialog-link" class="ui-icon-calculator">
+                        <span class="ui-icon-calculator"></span>
+                        <img src="../Imagenes/calculadora.png" width="20px"/></a></li>
                 </ul>
             </div>
-            <table style="width: 100%;">
-                <caption>
-                    <br />
+            <div>
+            <center>
+                <table style="height: 80px;">
                     <tr>
-                        <td align="right">
-                            <asp:Label ID="lblIdCliente" runat="server" CssClass="hide"></asp:Label>
-                            Nombre:
-                        </td>
-                        <td>
-                            <asp:TextBox ID="txt_name" runat="server" CssClass="form-control" 
-                                disabled="true" Height="20px" MaxLength="50" Width="149px"></asp:TextBox>
-                        </td>
-                        <td>
-                            <asp:TextBox ID="txt_app" runat="server" CssClass="form-control" 
-                                disabled="true" Height="20px" MaxLength="50" Width="149px"></asp:TextBox>
-                        </td>
-                        <td>
-                            <asp:TextBox ID="txt_apm" runat="server" CssClass="form-control" 
-                                disabled="true" Height="20px" MaxLength="50" Width="149px"></asp:TextBox>
-                        </td>
+                        <td></td>
                     </tr>
                     <tr>
-                        <td align="right">
-                            <br />
-                            Cantidad solicitada: $
-                        </td>
-                        <td>
-                            <br />
-                            <asp:TextBox ID="txt_cSolicitada" runat="server" CssClass="form-control" 
-                                Height="20px" MaxLength="50" Width="149px"></asp:TextBox>
-                            <asp:Label ID="lbl_cSolicitada" runat="server" CssClass="colorMje"></asp:Label>
-                        </td>
-                        <td align="right">
-                            <br />
-                            Modalidad del crédito:
-                        </td>
-                        <td>
-                            <br />
-                            <asp:DropDownList ID="txt_modalidad" runat="server" CssClass="form-control2" 
-                                DataSourceID="SqlDataSource3" DataTextField="descripcion" 
-                                DataValueField="idModalidad">
-                            </asp:DropDownList>
-                            <asp:SqlDataSource ID="SqlDataSource3" runat="server" 
-                                ConnectionString="<%$ ConnectionStrings:sccConnectionString %>" 
-                                SelectCommand="SELECT [idModalidad], [descripcion] FROM [modalidad]">
-                            </asp:SqlDataSource>
-                        </td>
+                        <td><asp:Label ID="Titulo" runat="server" Text="Balance Total de Créditos" Font-Size="20px" ></asp:Label></td>
                     </tr>
-                    <tr>
-                        <td align="right">
-                            <asp:Label ID="Label3" runat="server" CssClass="hide"></asp:Label>
-                            <br />
-                            Fecha inicio:
-                        </td>
-                        <td>
-                            <br />
-                            <asp:Calendar ID="txt_fInicio" runat="server"></asp:Calendar>
-                        </td>
-                        <td align="right">
-                            <br />
-                            Fecha fin:
-                        </td>
-                        <td>
-                            <br />
-                            <asp:Calendar ID="txt_fFin" runat="server"></asp:Calendar>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="right">
-                            <asp:Label ID="Label1" runat="server" CssClass="hide"></asp:Label>
-                            <br />
-                            Ingreso Mensual: $
-                        </td>
-                        <td>
-                            <br />
-                            <asp:TextBox ID="txt_ingresoMe" runat="server" CssClass="form-control" 
-                                Height="20px" MaxLength="50" Width="149px"></asp:TextBox>
-                            <asp:Label ID="lbl_ingresoMe" runat="server" CssClass="colorMje"></asp:Label>
-                        </td>
-                        <td align="right">
-                            <br />
-                            Gasto Mensual: $
-                        </td>
-                        <td>
-                            <br />
-                            <asp:TextBox ID="txt_gastoMens" runat="server" CssClass="form-control" 
-                                Height="20px" MaxLength="50" Width="149px"></asp:TextBox>
-                            <asp:Label ID="lbl_gastoMens" runat="server" CssClass="colorMje"></asp:Label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="right">
-                            <br />
-                            Descripción de crédito:
-                        </td>
-                        <td colspan="3">
-                            <br />
-                            <asp:TextBox ID="txt_desc" runat="server" CssClass="form-control" Height="40px" 
-                                MaxLength="100" Width="580px"></asp:TextBox>
-                            <asp:Label ID="lbl_desc" runat="server" CssClass="colorMje"></asp:Label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="right">
-                            <br />
-                            Descripción de las garantías:
-                        </td>
-                        <td colspan="3">
-                            <br />
-                            <asp:TextBox ID="txt_garantias" runat="server" CssClass="form-control" 
-                                Height="40px" MaxLength="100" Width="580px"></asp:TextBox>
-                            <asp:Label ID="lbl_garantias" runat="server" CssClass="colorMje"></asp:Label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="right">
-                            <asp:Label ID="Label4" runat="server" CssClass="hide"></asp:Label>
-                            <br />
-                            Monto valuado: $
-                        </td>
-                        <td>
-                            <br />
-                            <asp:TextBox ID="txt_montoVa" runat="server" CssClass="form-control" 
-                                Height="20px" MaxLength="50" Width="149px"></asp:TextBox>
-                            <asp:Label ID="lbl_montoVal" runat="server" CssClass="colorMje"></asp:Label>
-                        </td>
-                        <td align="right">
-                            <br />
-                            Crédito máximo: $
-                        </td>
-                        <td>
-                            <br />
-                            <asp:TextBox ID="txt_credMax" runat="server" CssClass="form-control" 
-                                Height="20px" MaxLength="50" Width="149px"></asp:TextBox>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="right">
-                            <br />
-                        </td>
-                        <td>
-                            <br />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="right">
-                        </td>
-                        <td>
-                            <center>
-                                <asp:Button ID="btn_Solicitar" runat="server" 
-                                    CssClass="btn btn-primary colorMje" OnClick="btn_Solicitar_Click" 
-                                    Text="Solicitar" />
-                            </center>
-                        </td>
-                        <td class="style2">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="right" class="style1">
-                        </td>
-                        <td class="style1">
-                            <asp:Label ID="lbl_Mensaje" runat="server"></asp:Label>
-                        </td>
-                        <td class="style3">
-                        </td>
-                    </tr>
-                </caption>
+                </table>
+            </div>
+            
+            <center>
+            <asp:Chart ID="Chart1" runat="server" DataSourceID="Balance">
+                <Series>
+                    <asp:Series ChartType="Pie" Name="Series1" XValueMember="Mes" 
+                        YValueMembers="Monto">
+                    </asp:Series>
+                </Series>
+                <ChartAreas>
+                    <asp:ChartArea Name="ChartArea1">
+                    </asp:ChartArea>
+                </ChartAreas>
+            </asp:Chart>
+            <asp:SqlDataSource ID="Balance" runat="server" 
+                ConnectionString="<%$ ConnectionStrings:sccConnectionString %>" 
+                SelectCommand="SELECT CASE MONTH(fechaInicio) WHEN 1 THEN 'Enero' WHEN 2 THEN 'Febrero' WHEN 3 THEN 'Marzo' WHEN 4 THEN 'Abril' WHEN 5 THEN 'Mayo' WHEN 6 THEN 'Junio' WHEN 7 THEN 'Julio' WHEN 8 THEN 'Agosto' WHEN 9 THEN 'Septiembre' WHEN 10 THEN 'Octubre' WHEN 11 THEN 'Noviembre' WHEN 12 THEN 'Diciembre' END AS Mes, SUM(cSolicitada) AS Monto FROM solicitud WHERE (estatus = 'Aceptado') GROUP BY MONTH(fechaInicio)">
+            </asp:SqlDataSource>
+            <center>
+            <table style="width: 60%;">
+                <tr>
+                    <td align="right">
+                        Monto total invertido:
+                    </td>
+                    <td align="right" style="width: 20px;height: 90px;">
+                        <span class="input-group-addon" style="height: 10px; width: 20px;">$</span>
+                    </td>
+                    <td>  
+                        <asp:Label ID="lblBalance" runat="server" ></asp:Label>
+                    </td>        
+                </tr>
             </table>
+            </center>
         </asp:Panel>
     </div>
-    <!-- ui-dialog -->
+       <!-- ui-dialog -->
     <div id="dialog" title="Calculadora Emergente" class="calculadora">
         <form action="#" id="calculadora">
         <p id="textoPantalla">
@@ -532,15 +413,16 @@
         </p>
         </form>
     </div>
-    <script>
 
-        $("#button").button();
-        $("#radioset").buttonset();
+<script>
 
-        $("#dialog").dialog({
-            autoOpen: false,
-            width: 240,
-            buttons: [
+    $("#button").button();
+    $("#radioset").buttonset();
+
+    $("#dialog").dialog({
+        autoOpen: false,
+        width: 240,
+        buttons: [
 		{
 		    text: "Ok",
 		    click: function () {
@@ -548,17 +430,16 @@
 		    }
 		}
 	]
-        });
+    });
 
-        // Link to open the dialog
-        $("#dialog-link").click(function (event) {
-            $("#dialog").dialog("open");
-            event.preventDefault();
-        });
+    // Link to open the dialog
+    $("#dialog-link").click(function (event) {
+        $("#dialog").dialog("open");
+        event.preventDefault();
+    });
 
-
-        // Hover states on the static widgets
-        $("#dialog-link, #icons li").hover(
+    // Hover states on the static widgets
+    $("#dialog-link, #icons li").hover(
 	function () {
 	    $(this).addClass("ui-state-hover");
 	},

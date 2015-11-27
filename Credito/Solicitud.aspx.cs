@@ -70,8 +70,9 @@ public partial class Credito_Solicitud : System.Web.UI.Page
                 obj_Solicitud.idCliente = Convert.ToInt32(idCliente);
                 obj_Solicitud.cSolicitada = Convert.ToInt32(txt_cSolicitada.Text.Trim());
                 obj_Solicitud.idModalidad = Convert.ToByte(txt_modalidad.SelectedValue);
-                obj_Solicitud.fechaInicio = txt_fInicio.Text.Trim();
-                obj_Solicitud.fechaFin = txt_fFin.Text.Trim();
+                //obj_Cliente.fechaNac = txt_fn.SelectedDate.ToShortDateString(
+                obj_Solicitud.fechaInicio = txt_fInicio.SelectedDate.ToShortDateString();
+                obj_Solicitud.fechaFin = txt_fFin.SelectedDate.ToShortDateString();
                 obj_Solicitud.ingresoMensual = Convert.ToDecimal(txt_ingresoMe.Text.Trim());
                 obj_Solicitud.gastoMensual = Convert.ToDecimal(txt_gastoMens.Text.Trim());
                 obj_Solicitud.descripcionCredito = txt_desc.Text.Trim();

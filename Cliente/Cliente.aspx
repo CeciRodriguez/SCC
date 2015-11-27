@@ -9,14 +9,11 @@
     <link href="../Bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
     <link href="../Styles/menu.css" rel="stylesheet" type="text/css" />
     <link href="../Styles/styles.css" rel="stylesheet" type="text/css" />
-    <link href="../Styles/jquery-ui.css" rel="stylesheet" type="text/css" />
     <script src="../js/jquery-latest.min.js" type="text/javascript"></script>
     <script src="../js/script.js" type="text/javascript"></script>
     <script src="../js/Cliente.js" type="text/javascript"></script>
-    <script src="../js/script.js" type="text/javascript"></script>
     <script src="../js/jquery-ui.js" type="text/javascript"></script>
-    <script src="../js/calendario.js" type="text/javascript"></script>
-    <script src="../js/jquery.js" type="text/javascript"></script>
+    <script src="../js/script.js" type="text/javascript"></script>
     <script src="../js/DataTable.js" type="text/javascript"></script>
     <script src="../js/dataTable-es.js" type="text/javascript"></script>
     <script src="../js/jquery.dataTables.min.js" type="text/javascript"></script>
@@ -300,194 +297,193 @@
                         <ul>
                             <li><a href="Cliente.aspx">Registro</a></li>
                             <li><a href="ListaClientes.aspx">Ver clientes</a></li>
-                            <li><a href="EStadoCuenta.aspx">Estados de cuenta</a></li>
+                            <li><a href="ListaClientesE.aspx">Estados de cuenta</a></li>
                         </ul>
                     </li>
                     <li><a href='#'>Créditos</a>
                         <ul>
                             <li><a href='#'>Solicitudes</a>
                                 <ul>
-                                    <li><a href="../Credito/Aceptadas.aspx">Aceptadas</a></li>
-                                    <li><a href="../Credito/Rechazadas.aspx">Rechazadas</a></li>
+                                    <li><a href="../Credito/Aceptadas.aspx">Aceptados</a></li>
+                                    <li><a href="../Credito/Rechazadas.aspx">Rechazados</a></li>
                                 </ul>
                             </li>
                         </ul>
                     </li>
-                    <li><a href='#'>Balance</a>
+                    <li><a href='#'>Documentos</a>
                         <ul>
-                            <li><a href='#'>General</a></li>
-                            <li><a href='#'>Mensual</a></li>
+                            <li><a href="../ReporteSCC/ListaClienteSCC.aspx">Clientes</a></li>
+                            <li><a href="../Credito/Formatos.aspx">Garantías y Pagaré</a></li>
                         </ul>
                     </li>
-                    <li><a href='#'>Contactos</a></li>
-                   <li><a href="#" id="dialog-link" class="ui-icon-calculator">
-                <span class="ui-icon-calculator"></span><img src="../Imagenes/calculadora.png" width="20px"/> </a></li>
+                    <li><a href="../Balance/Balance.aspx">Balance</a></li>
+                    <li><a href="#" id="dialog-link" class="ui-icon-calculator"><span class="ui-icon-calculator">
+                    </span>
+                        <img src="../Imagenes/calculadora.png" width="20px" />
+                    </a></li>
                 </ul>
             </div>
             <table style="width: 100%;">
-                    <br />
-                    <tr>
-                        <td align="right">
-                            Nombre:
-                        </td>
-                        <td>
-                            <asp:TextBox ID="txt_name" runat="server" CssClass="form-control" Height="20px" MaxLength="50"
-                                Width="149px"></asp:TextBox>
-                            <asp:Label ID="lblNom" runat="server" CssClass="colorMje"></asp:Label>
-                        </td>
-                        <td class="style2">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="right">
-                            Apellido Paterno:
-                        </td>
-                        <td>
-                            <asp:TextBox ID="txt_app" runat="server" CssClass="form-control" Height="20px" MaxLength="50"
-                                Width="149px"></asp:TextBox>
-                            <asp:Label ID="lblApp" runat="server" CssClass="colorMje"></asp:Label>
-                        </td>
-                        <td class="style2">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="right">
-                            Apellido Materno:
-                        </td>
-                        <td>
-                            <asp:TextBox ID="txt_apm" runat="server" CssClass="form-control" Height="20px" MaxLength="50"
-                                Width="149px"></asp:TextBox>
-                            <asp:Label ID="lblApm" runat="server" CssClass="colorMje"></asp:Label>
-                        </td>
-                        <td class="style2">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="right">
-                            Sexo:
-                        </td>
-                        <td>
-                            <asp:DropDownList ID="txt_sexo" runat="server" CssClass="form-control" DataSourceID="SqlDataSource1"
-                                DataTextField="descripcion" DataValueField="idSexo" Width="175px">
-                            </asp:DropDownList>
-                            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:sccConnectionString1 %>"
-                                SelectCommand="SELECT [descripcion], [idSexo] FROM [sexo]"></asp:SqlDataSource>
-                            <asp:Label ID="lblSexo" runat="server"></asp:Label>
-                        </td>
-                        <td class="style2">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="right">
-                            Fecha de Nacimiento:
-                        </td>
-                        <td>
-                            <asp:TextBox ID="fecha_registro" runat="server" CssClass="form-control" Height="20px"
-                                MaxLength="50" Width="149px"></asp:TextBox>
-                            <asp:TextBox ID="txt_fn" runat="server" CssClass="form-control" Height="20px" MaxLength="50"
-                                Width="149px"></asp:TextBox>
-                            <asp:Label ID="lblFn" runat="server" CssClass="colorMje"></asp:Label>
-                        </td>
-                        <td class="style2">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="right">
-                            Número de IFE:
-                        </td>
-                        <td>
-                            <asp:TextBox ID="txt_IFE" runat="server" CssClass="form-control" Height="20px" MaxLength="13"
-                                Width="149px"></asp:TextBox>
-                            <asp:Label ID="lblIFE" runat="server" CssClass="colorMje"></asp:Label>
-                        </td>
-                        <td class="style2">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="right">
-                            Domicilio:
-                        </td>
-                        <td>
-                            <asp:TextBox ID="txt_Dom" runat="server" CssClass="form-control" Height="20px" MaxLength="50"
-                                Width="149px"></asp:TextBox>
-                            <asp:Label ID="lblDom" runat="server" CssClass="colorMje"></asp:Label>
-                        </td>
-                        <td class="style2">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="right">
-                            Número:
-                        </td>
-                        <td>
-                            <asp:TextBox ID="txt_Num" runat="server" CssClass="form-control" Height="20px" MaxLength="5"
-                                Width="149px"></asp:TextBox>
-                            <asp:Label ID="lblNum" runat="server" CssClass="colorMje"></asp:Label>
-                        </td>
-                        <td class="style2">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="right">
-                            Señas particulares (casa):
-                        </td>
-                        <td>
-                            <asp:TextBox ID="txt_casa" runat="server" CssClass="form-control" Height="20px" MaxLength="50"
-                                Width="149px"></asp:TextBox>
-                            <asp:Label ID="lblCasa" runat="server" CssClass="colorMje"></asp:Label>
-                        </td>
-                        <td class="style2">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="right">
-                            Teléfono:
-                        </td>
-                        <td>
-                            <asp:TextBox ID="txt_tel" runat="server" CssClass="form-control" Height="20px" MaxLength="10"
-                                Width="149px"></asp:TextBox>
-                            <asp:Label ID="lblTel" runat="server" CssClass="colorMje"></asp:Label>
-                        </td>
-                        <td class="style2">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="right">
-                            Teléfono (alterno):
-                        </td>
-                        <td>
-                            <asp:TextBox ID="txt_tela" runat="server" CssClass="form-control" Height="20px" MaxLength="10"
-                                Width="149px"></asp:TextBox>
-                            <asp:Label ID="lblTela" runat="server" CssClass="colorMje"></asp:Label>
-                        </td>
-                        <td class="style2">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="right">
-                        </td>
-                        <td>
-                            <asp:Button ID="btn_Agregar" runat="server" CssClass="btn btn-primary colorMje" OnClick="btn_Agregar_Click"
-                                Text="Agregar" />
-                            <asp:Button ID="btn_Modificar" runat="server" CssClass="btn btn-default colorMje"
-                                OnClick="btn_Modificar_Click" Text="Modificar" />
-                        </td>
-                        <td class="style2">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="right" class="style1">
-                        </td>
-                        <td class="style1">
-                            <asp:Label ID="lbl_Mensaje" runat="server"></asp:Label>
-                        </td>
-                        <td class="style3">
-                        </td>
-                    </tr>
+                        <caption>
+                            <br />
+                            <tr>
+                                <td align="right">
+                                    Nombre:
+                                </td>
+                                <td>
+                                    <asp:TextBox ID="txt_name" runat="server" CssClass="form-control" Height="20px" 
+                                        MaxLength="50" Width="149px"></asp:TextBox>
+                                    <asp:Label ID="lblNom" runat="server" CssClass="colorMje"></asp:Label>
+                                </td>
+                                <td align="right">
+                                    Apellido Paterno:
+                                </td>
+                                <td>
+                                    <asp:TextBox ID="txt_app" runat="server" CssClass="form-control" Height="20px" 
+                                        MaxLength="50" Width="149px"></asp:TextBox>
+                                    <asp:Label ID="lblApp" runat="server" CssClass="colorMje"></asp:Label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="right">
+                                    <br />
+                                    Apellido Materno:
+                                </td>
+                                <td>
+                                    <br />
+                                    <asp:TextBox ID="txt_apm" runat="server" CssClass="form-control" Height="20px" 
+                                        MaxLength="50" Width="149px"></asp:TextBox>
+                                    <asp:Label ID="lblApm" runat="server" CssClass="colorMje"></asp:Label>
+                                </td>
+                                <td align="right">
+                                    <br />
+                                    Sexo:
+                                </td>
+                                <td>
+                                    <br />
+                                    <asp:DropDownList ID="txt_sexo" runat="server" CssClass="form-control" 
+                                        DataSourceID="SqlDataSource1" DataTextField="descripcion" 
+                                        DataValueField="idSexo" Width="175px">
+                                    </asp:DropDownList>
+                                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
+                                        ConnectionString="<%$ ConnectionStrings:sccConnectionString1 %>" 
+                                        SelectCommand="SELECT [descripcion], [idSexo] FROM [sexo]">
+                                    </asp:SqlDataSource>
+                                    <asp:Label ID="lblSexo" runat="server"></asp:Label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="right">
+                                    <br />
+                                    Fecha de Nacimiento:
+                                </td>
+                                <td>
+                                    <br />
+                                    <asp:Calendar ID="txt_fn" runat="server"></asp:Calendar>
+                                    <asp:Label ID="lblFn" runat="server" CssClass="colorMje"></asp:Label>
+                                </td>
+                                <td class="style2">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="right">
+                                    <br />
+                                    Número de IFE:
+                                </td>
+                                <td>
+                                    <br />
+                                    <asp:TextBox ID="txt_IFE" runat="server" CssClass="form-control" Height="20px" 
+                                        MaxLength="13" Width="180px"></asp:TextBox>
+                                    <asp:Label ID="lblIFE" runat="server" CssClass="colorMje"></asp:Label>
+                                </td>
+                                <td class="style2">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="right">
+                                    <br />
+                                    Domicilio:
+                                </td>
+                                <td >
+                                <br />
+                                    <asp:TextBox ID="txt_Dom" runat="server" CssClass="form-control" Height="20px" 
+                                        MaxLength="50" Width="180px"></asp:TextBox>
+                                    <asp:Label ID="lblDom" runat="server" CssClass="colorMje"></asp:Label>
+                                </td>
+                                <td align="right">
+                                    <br />
+                                    Número:
+                                </td>
+                                <td >
+                                <br />
+                                    <asp:TextBox ID="txt_Num" runat="server" CssClass="form-control" Height="20px" 
+                                        MaxLength="50" Width="80px"></asp:TextBox>
+                                    <asp:Label ID="lblNum" runat="server" CssClass="colorMje"></asp:Label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="right">
+                                    <br />
+                                    Señas particulares:
+                                </td>
+                                <td colspan="3">
+                                    <br />
+                                    <asp:TextBox ID="txt_casa" runat="server" CssClass="form-control" Height="40px" 
+                                        MaxLength="50" Width="587px"></asp:TextBox>
+                                    <asp:Label ID="lblCasa" runat="server" CssClass="colorMje"></asp:Label>
+                                </td>
+                                <td class="style2">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="right">
+                                    <br />
+                                    Teléfono:
+                                </td>
+                                <td>
+                                    <br />
+                                    <asp:TextBox ID="txt_tel" runat="server" CssClass="form-control" Height="20px" 
+                                        MaxLength="10" Width="149px"></asp:TextBox>
+                                    <asp:Label ID="lblTel" runat="server" CssClass="colorMje"></asp:Label>
+                                </td>
+                                <td align="right">
+                                    <br />
+                                    Teléfono (alterno):
+                                </td>
+                                <td>
+                                    <br />
+                                    <asp:TextBox ID="txt_tela" runat="server" CssClass="form-control" Height="20px" 
+                                        MaxLength="10" Width="149px"></asp:TextBox>
+                                    <asp:Label ID="lblTela" runat="server" CssClass="colorMje"></asp:Label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="right">
+                                </td>
+                                <td colspan="2">
+                                <center>
+                                <br />
+                                    <asp:Button ID="btn_Agregar" runat="server" CssClass="btn btn-primary colorMje" 
+                                        OnClick="btn_Agregar_Click" Text="Agregar" />
+                                </center>
+                                </td>
+                                <td class="style2">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="right" class="style1">
+                                </td>
+                                <td class="style1">
+                                    <asp:Label ID="lbl_Mensaje" runat="server"></asp:Label>
+                                </td>
+                                <td class="style3">
+                                </td>
+                            </tr>
+                        </caption>
             </table>
         </asp:Panel>
     </div>
-       <!-- ui-dialog -->
+    <!-- ui-dialog -->
     <div id="dialog" title="Calculadora Emergente" class="calculadora">
         <form action="#" id="calculadora">
         <p id="textoPantalla">
@@ -527,7 +523,6 @@
         </p>
         </form>
     </div>
-
     <script>
 
         $("#button").button();
@@ -562,5 +557,5 @@
 	    $(this).removeClass("ui-state-hover");
 	}
 );
-</script>
+    </script>
 </asp:Content>

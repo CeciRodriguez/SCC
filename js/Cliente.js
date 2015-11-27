@@ -67,9 +67,9 @@ $(document).ready(function () {
 
     });
 
-    function verListado() {
+    function verListadoE() {
         $.ajax({
-            url: "ListaClientesE.aspx/ConstruirListado", //este es le metodo que se invoca del cSS
+            url: "ListaClientesE.aspx/ConstruirListadoE", //este es le metodo que se invoca del cSS
             data: "{}",
             dataType: "json",
             type: "post",
@@ -77,7 +77,7 @@ $(document).ready(function () {
             dataFilter: function (data) { return data; },
             success: function (data) {
                 $("#lblListado").val(data.d);
-                $("#ListadoCliente").dataTable({
+                $("#ListadoEstado").dataTable({
                     "bJQueryUI": true,
                     "sPaginationType": "full_numbers",
                     "iDisplayLength": 10,
@@ -101,7 +101,7 @@ $(document).ready(function () {
         });
     };
 
-    $("#ListadoCliente").dataTable({
+    $("#ListadoEstado").dataTable({
         "bJQueryUI": true,
         "sPaginationType": "full_numbers",
         "iDisplayLength": 10,

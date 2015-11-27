@@ -21,11 +21,11 @@ public partial class Cliente_ListaClientesE : System.Web.UI.Page
         /******************************************VALIDADOS*****************************************/
         ARRAYLISTADO = new string[] { "Nombre", "Apellido paterno", "Apellido materno", "IFE", "Estado de cuenta"};
         QUERYLISTADO = "select clie.nomCliente, clie.apCliente, clie.amCliente, clie.numIFE, '<a href=\"EStadoCuenta.aspx?idCliente='+convert(varchar,clie.idCliente)+'\">'+'Click aqui' " +
-            " from cliente clie ";
+            " from cliente clie inner join solicitud so on clie.idCliente=so.idCliente where so.estatus='Aceptado' ";
 
         MuestraResultados resultados = new MuestraResultados();
         resultados.setDatos(ARRAYLISTADO, QUERYLISTADO);
-        lblListado.Text = resultados.ConstruyeListado();
+        lblListado.Text = resultados.ConstruyeListadoE();
 
         /********************************************************************************************/
         #endregion
@@ -33,11 +33,11 @@ public partial class Cliente_ListaClientesE : System.Web.UI.Page
     }
     #region Listado
     [WebMethod]
-    public static string ConstruirListado()
+    public static string ConstruirListadoE()
     {
         MuestraResultados resultados = new MuestraResultados();
         resultados.setDatos(ARRAYLISTADO, QUERYLISTADO);
-        return resultados.ConstruyeListado();
+        return resultados.ConstruyeListadoE();
     }
     #endregion
     

@@ -1,6 +1,8 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage1.master" AutoEventWireup="true"
-    CodeFile="Solicitud.aspx.cs" Inherits="Credito_Solicitud" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage1.master" AutoEventWireup="true"
+    CodeFile="ListaClienteSCC.aspx.cs" Inherits="ReporteSCC_ListaClienteSCC" %>
 
+<%@ Register Assembly="Microsoft.ReportViewer.WebForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
+    Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="Server">
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,7 +13,7 @@
     <link href="../Styles/styles.css" rel="stylesheet" type="text/css" />
     <script src="../js/jquery-latest.min.js" type="text/javascript"></script>
     <script src="../js/script.js" type="text/javascript"></script>
-    <!-- <script src="../js/Cliente.js" type="text/javascript"></script> -->
+    <script src="../js/Cliente.js" type="text/javascript"></script>
     <script src="../js/jquery-ui.js" type="text/javascript"></script>
     <script src="../js/script.js" type="text/javascript"></script>
     <script src="../js/DataTable.js" type="text/javascript"></script>
@@ -286,7 +288,7 @@
 	    $(this).removeClass("ui-state-hover");
 	}
 );
-</script>
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="Server">
     <div>
@@ -302,194 +304,80 @@
                     </li>
                     <li><a href='#'>Créditos</a>
                         <ul>
-                            <li><a href="Solicitud.aspx">Solicitudes</a>
+                            <li><a href='#'>Solicitudes</a>
                                 <ul>
-                                   <li><a href="Aceptadas.aspx">Aceptadas</a></li>
-                                    <li><a href="Rechazadas.aspx">Rechazadas</a></li>
+                                    <li><a href="../Credito/Aceptadas.aspx">Aceptados</a></li>
+                                    <li><a href="../Credito/Rechazadas.aspx">Rechazados</a></li>
                                 </ul>
                             </li>
                         </ul>
                     </li>
-                   <li><a href='#'>Documentos</a>
+                    <li><a href='#'>Documentos</a>
                         <ul>
-                            <li><a href="../ReporteSCC/ListaClienteSCC.aspx">Clientes</a></li>
-                            <li><a href="Formatos.aspx">Garantías y Pagaré</a></li>
+                            <li><a href="ListaClienteSCC.aspx">Clientes</a></li>
+                            <li><a href="../Credito/Formatos.aspx">Garantías y Pagaré</a></li>
                         </ul>
                     </li>
                     <li><a href="../Balance/Balance.aspx">Balance</a></li>
-                    <li><a href="#" id="dialog-link" class="ui-icon-calculator">
-                <span class="ui-icon-calculator"></span><img src="../Imagenes/calculadora.png" width="20px"/> </a></li>
-
+                    <li><a href="#" id="dialog-link" class="ui-icon-calculator"><span class="ui-icon-calculator">
+                    </span>
+                        <img src="../Imagenes/calculadora.png" width="20px" />
+                    </a></li>
                 </ul>
             </div>
-            <table style="width: 100%;">
-                <caption>
-                    <br />
-                    <tr>
-                        <td align="right">
-                            <asp:Label ID="lblIdCliente" runat="server" CssClass="hide"></asp:Label>
-                            Nombre:
-                        </td>
-                        <td>
-                            <asp:TextBox ID="txt_name" runat="server" CssClass="form-control" 
-                                disabled="true" Height="20px" MaxLength="50" Width="149px"></asp:TextBox>
-                        </td>
-                        <td>
-                            <asp:TextBox ID="txt_app" runat="server" CssClass="form-control" 
-                                disabled="true" Height="20px" MaxLength="50" Width="149px"></asp:TextBox>
-                        </td>
-                        <td>
-                            <asp:TextBox ID="txt_apm" runat="server" CssClass="form-control" 
-                                disabled="true" Height="20px" MaxLength="50" Width="149px"></asp:TextBox>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="right">
-                            <br />
-                            Cantidad solicitada: $
-                        </td>
-                        <td>
-                            <br />
-                            <asp:TextBox ID="txt_cSolicitada" runat="server" CssClass="form-control" 
-                                Height="20px" MaxLength="50" Width="149px"></asp:TextBox>
-                            <asp:Label ID="lbl_cSolicitada" runat="server" CssClass="colorMje"></asp:Label>
-                        </td>
-                        <td align="right">
-                            <br />
-                            Modalidad del crédito:
-                        </td>
-                        <td>
-                            <br />
-                            <asp:DropDownList ID="txt_modalidad" runat="server" CssClass="form-control2" 
-                                DataSourceID="SqlDataSource3" DataTextField="descripcion" 
-                                DataValueField="idModalidad">
-                            </asp:DropDownList>
-                            <asp:SqlDataSource ID="SqlDataSource3" runat="server" 
-                                ConnectionString="<%$ ConnectionStrings:sccConnectionString %>" 
-                                SelectCommand="SELECT [idModalidad], [descripcion] FROM [modalidad]">
-                            </asp:SqlDataSource>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="right">
-                            <asp:Label ID="Label3" runat="server" CssClass="hide"></asp:Label>
-                            <br />
-                            Fecha inicio:
-                        </td>
-                        <td>
-                            <br />
-                            <asp:Calendar ID="txt_fInicio" runat="server"></asp:Calendar>
-                        </td>
-                        <td align="right">
-                            <br />
-                            Fecha fin:
-                        </td>
-                        <td>
-                            <br />
-                            <asp:Calendar ID="txt_fFin" runat="server"></asp:Calendar>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="right">
-                            <asp:Label ID="Label1" runat="server" CssClass="hide"></asp:Label>
-                            <br />
-                            Ingreso Mensual: $
-                        </td>
-                        <td>
-                            <br />
-                            <asp:TextBox ID="txt_ingresoMe" runat="server" CssClass="form-control" 
-                                Height="20px" MaxLength="50" Width="149px"></asp:TextBox>
-                            <asp:Label ID="lbl_ingresoMe" runat="server" CssClass="colorMje"></asp:Label>
-                        </td>
-                        <td align="right">
-                            <br />
-                            Gasto Mensual: $
-                        </td>
-                        <td>
-                            <br />
-                            <asp:TextBox ID="txt_gastoMens" runat="server" CssClass="form-control" 
-                                Height="20px" MaxLength="50" Width="149px"></asp:TextBox>
-                            <asp:Label ID="lbl_gastoMens" runat="server" CssClass="colorMje"></asp:Label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="right">
-                            <br />
-                            Descripción de crédito:
-                        </td>
-                        <td colspan="3">
-                            <br />
-                            <asp:TextBox ID="txt_desc" runat="server" CssClass="form-control" Height="40px" 
-                                MaxLength="100" Width="580px"></asp:TextBox>
-                            <asp:Label ID="lbl_desc" runat="server" CssClass="colorMje"></asp:Label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="right">
-                            <br />
-                            Descripción de las garantías:
-                        </td>
-                        <td colspan="3">
-                            <br />
-                            <asp:TextBox ID="txt_garantias" runat="server" CssClass="form-control" 
-                                Height="40px" MaxLength="100" Width="580px"></asp:TextBox>
-                            <asp:Label ID="lbl_garantias" runat="server" CssClass="colorMje"></asp:Label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="right">
-                            <asp:Label ID="Label4" runat="server" CssClass="hide"></asp:Label>
-                            <br />
-                            Monto valuado: $
-                        </td>
-                        <td>
-                            <br />
-                            <asp:TextBox ID="txt_montoVa" runat="server" CssClass="form-control" 
-                                Height="20px" MaxLength="50" Width="149px"></asp:TextBox>
-                            <asp:Label ID="lbl_montoVal" runat="server" CssClass="colorMje"></asp:Label>
-                        </td>
-                        <td align="right">
-                            <br />
-                            Crédito máximo: $
-                        </td>
-                        <td>
-                            <br />
-                            <asp:TextBox ID="txt_credMax" runat="server" CssClass="form-control" 
-                                Height="20px" MaxLength="50" Width="149px"></asp:TextBox>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="right">
-                            <br />
-                        </td>
-                        <td>
-                            <br />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="right">
-                        </td>
-                        <td>
-                            <center>
-                                <asp:Button ID="btn_Solicitar" runat="server" 
-                                    CssClass="btn btn-primary colorMje" OnClick="btn_Solicitar_Click" 
-                                    Text="Solicitar" />
-                            </center>
-                        </td>
-                        <td class="style2">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="right" class="style1">
-                        </td>
-                        <td class="style1">
-                            <asp:Label ID="lbl_Mensaje" runat="server"></asp:Label>
-                        </td>
-                        <td class="style3">
-                        </td>
-                    </tr>
-                </caption>
-            </table>
+            <div>
+                <br />
+                <br />
+                <br />
+                <br />
+                <center>
+                    <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt"
+                        InteractiveDeviceInfos="(Collection)" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt"
+                        Width="681px">
+                        <LocalReport ReportPath="ReporteSCC\ClienteSCC.rdlc">
+                            <DataSources>
+                                <rsweb:ReportDataSource DataSourceId="ObjectDataSource1" Name="DataSet1" />
+                            </DataSources>
+                        </LocalReport>
+                    </rsweb:ReportViewer>
+                    <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" DeleteMethod="Delete"
+                        InsertMethod="Insert" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData"
+                        TypeName="SCCDataSetTableAdapters.ClienteTableAdapter" UpdateMethod="Update">
+                        <DeleteParameters>
+                            <asp:Parameter Name="Original_idCliente" Type="Int32" />
+                        </DeleteParameters>
+                        <InsertParameters>
+                            <asp:Parameter Name="nomCliente" Type="String" />
+                            <asp:Parameter Name="apCliente" Type="String" />
+                            <asp:Parameter Name="amCliente" Type="String" />
+                            <asp:Parameter Name="idSexo" Type="Int32" />
+                            <asp:Parameter Name="fechaNac" Type="String" />
+                            <asp:Parameter Name="numIFE" Type="String" />
+                            <asp:Parameter Name="domicilio" Type="String" />
+                            <asp:Parameter Name="num" Type="String" />
+                            <asp:Parameter Name="descripCasa" Type="String" />
+                            <asp:Parameter Name="telefono" Type="String" />
+                            <asp:Parameter Name="telefonoAlt" Type="String" />
+                        </InsertParameters>
+                        <UpdateParameters>
+                            <asp:Parameter Name="nomCliente" Type="String" />
+                            <asp:Parameter Name="apCliente" Type="String" />
+                            <asp:Parameter Name="amCliente" Type="String" />
+                            <asp:Parameter Name="idSexo" Type="Int32" />
+                            <asp:Parameter Name="fechaNac" Type="String" />
+                            <asp:Parameter Name="numIFE" Type="String" />
+                            <asp:Parameter Name="domicilio" Type="String" />
+                            <asp:Parameter Name="num" Type="String" />
+                            <asp:Parameter Name="descripCasa" Type="String" />
+                            <asp:Parameter Name="telefono" Type="String" />
+                            <asp:Parameter Name="telefonoAlt" Type="String" />
+                            <asp:Parameter Name="Original_idCliente" Type="Int32" />
+                        </UpdateParameters>
+                    </asp:ObjectDataSource>
+                    <asp:ScriptManager ID="ScriptManager1" runat="server">
+                    </asp:ScriptManager>
+                </center>
+            </div>
         </asp:Panel>
     </div>
     <!-- ui-dialog -->
@@ -566,5 +454,5 @@
 	    $(this).removeClass("ui-state-hover");
 	}
 );
-</script>
+    </script>
 </asp:Content>

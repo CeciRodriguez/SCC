@@ -35,6 +35,9 @@ public partial class DataClassesDataContext : System.Data.Linq.DataContext
   partial void Insertmodalidad(modalidad instance);
   partial void Updatemodalidad(modalidad instance);
   partial void Deletemodalidad(modalidad instance);
+  partial void Insertpagos(pagos instance);
+  partial void Updatepagos(pagos instance);
+  partial void Deletepagos(pagos instance);
   partial void Insertsesion(sesion instance);
   partial void Updatesesion(sesion instance);
   partial void Deletesesion(sesion instance);
@@ -89,6 +92,14 @@ public partial class DataClassesDataContext : System.Data.Linq.DataContext
 		get
 		{
 			return this.GetTable<modalidad>();
+		}
+	}
+	
+	public System.Data.Linq.Table<pagos> pagos
+	{
+		get
+		{
+			return this.GetTable<pagos>();
 		}
 	}
 	
@@ -147,6 +158,8 @@ public partial class Cliente : INotifyPropertyChanging, INotifyPropertyChanged
 	
 	private string _telefonoAlt;
 	
+	private EntitySet<pagos> _pagos;
+	
 	private EntitySet<solicitud> _solicitud;
 	
 	private EntityRef<sexo> _sexo;
@@ -183,6 +196,7 @@ public partial class Cliente : INotifyPropertyChanging, INotifyPropertyChanged
 	
 	public Cliente()
 	{
+		this._pagos = new EntitySet<pagos>(new Action<pagos>(this.attach_pagos), new Action<pagos>(this.detach_pagos));
 		this._solicitud = new EntitySet<solicitud>(new Action<solicitud>(this.attach_solicitud), new Action<solicitud>(this.detach_solicitud));
 		this._sexo = default(EntityRef<sexo>);
 		OnCreated();
@@ -432,6 +446,19 @@ public partial class Cliente : INotifyPropertyChanging, INotifyPropertyChanged
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Cliente_pagos", Storage="_pagos", ThisKey="idCliente", OtherKey="idCliente")]
+	public EntitySet<pagos> pagos
+	{
+		get
+		{
+			return this._pagos;
+		}
+		set
+		{
+			this._pagos.Assign(value);
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Cliente_solicitud", Storage="_solicitud", ThisKey="idCliente", OtherKey="idCliente")]
 	public EntitySet<solicitud> solicitud
 	{
@@ -497,6 +524,18 @@ public partial class Cliente : INotifyPropertyChanging, INotifyPropertyChanged
 		{
 			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 		}
+	}
+	
+	private void attach_pagos(pagos entity)
+	{
+		this.SendPropertyChanging();
+		entity.Cliente = this;
+	}
+	
+	private void detach_pagos(pagos entity)
+	{
+		this.SendPropertyChanging();
+		entity.Cliente = null;
 	}
 	
 	private void attach_solicitud(solicitud entity)
@@ -623,6 +662,733 @@ public partial class modalidad : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		this.SendPropertyChanging();
 		entity.modalidad = null;
+	}
+}
+
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.pagos")]
+public partial class pagos : INotifyPropertyChanging, INotifyPropertyChanged
+{
+	
+	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+	
+	private int _idPagos;
+	
+	private int _idCliente;
+	
+	private System.Nullable<int> _p1;
+	
+	private System.Nullable<int> _p2;
+	
+	private System.Nullable<int> _p3;
+	
+	private System.Nullable<int> _p4;
+	
+	private System.Nullable<int> _p5;
+	
+	private System.Nullable<int> _p6;
+	
+	private System.Nullable<int> _p7;
+	
+	private System.Nullable<int> _p8;
+	
+	private System.Nullable<int> _p9;
+	
+	private System.Nullable<int> _p10;
+	
+	private System.Nullable<int> _p11;
+	
+	private System.Nullable<int> _p12;
+	
+	private System.Nullable<int> _p13;
+	
+	private System.Nullable<int> _p14;
+	
+	private System.Nullable<int> _p15;
+	
+	private System.Nullable<int> _p16;
+	
+	private System.Nullable<int> _p17;
+	
+	private System.Nullable<int> _p18;
+	
+	private System.Nullable<int> _p19;
+	
+	private System.Nullable<int> _p20;
+	
+	private System.Nullable<int> _p21;
+	
+	private System.Nullable<int> _p22;
+	
+	private System.Nullable<int> _p23;
+	
+	private System.Nullable<int> _p24;
+	
+	private System.Nullable<int> _p25;
+	
+	private EntityRef<Cliente> _Cliente;
+	
+    #region Definiciones de métodos de extensibilidad
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidPagosChanging(int value);
+    partial void OnidPagosChanged();
+    partial void OnidClienteChanging(int value);
+    partial void OnidClienteChanged();
+    partial void Onp1Changing(System.Nullable<int> value);
+    partial void Onp1Changed();
+    partial void Onp2Changing(System.Nullable<int> value);
+    partial void Onp2Changed();
+    partial void Onp3Changing(System.Nullable<int> value);
+    partial void Onp3Changed();
+    partial void Onp4Changing(System.Nullable<int> value);
+    partial void Onp4Changed();
+    partial void Onp5Changing(System.Nullable<int> value);
+    partial void Onp5Changed();
+    partial void Onp6Changing(System.Nullable<int> value);
+    partial void Onp6Changed();
+    partial void Onp7Changing(System.Nullable<int> value);
+    partial void Onp7Changed();
+    partial void Onp8Changing(System.Nullable<int> value);
+    partial void Onp8Changed();
+    partial void Onp9Changing(System.Nullable<int> value);
+    partial void Onp9Changed();
+    partial void Onp10Changing(System.Nullable<int> value);
+    partial void Onp10Changed();
+    partial void Onp11Changing(System.Nullable<int> value);
+    partial void Onp11Changed();
+    partial void Onp12Changing(System.Nullable<int> value);
+    partial void Onp12Changed();
+    partial void Onp13Changing(System.Nullable<int> value);
+    partial void Onp13Changed();
+    partial void Onp14Changing(System.Nullable<int> value);
+    partial void Onp14Changed();
+    partial void Onp15Changing(System.Nullable<int> value);
+    partial void Onp15Changed();
+    partial void Onp16Changing(System.Nullable<int> value);
+    partial void Onp16Changed();
+    partial void Onp17Changing(System.Nullable<int> value);
+    partial void Onp17Changed();
+    partial void Onp18Changing(System.Nullable<int> value);
+    partial void Onp18Changed();
+    partial void Onp19Changing(System.Nullable<int> value);
+    partial void Onp19Changed();
+    partial void Onp20Changing(System.Nullable<int> value);
+    partial void Onp20Changed();
+    partial void Onp21Changing(System.Nullable<int> value);
+    partial void Onp21Changed();
+    partial void Onp22Changing(System.Nullable<int> value);
+    partial void Onp22Changed();
+    partial void Onp23Changing(System.Nullable<int> value);
+    partial void Onp23Changed();
+    partial void Onp24Changing(System.Nullable<int> value);
+    partial void Onp24Changed();
+    partial void Onp25Changing(System.Nullable<int> value);
+    partial void Onp25Changed();
+    #endregion
+	
+	public pagos()
+	{
+		this._Cliente = default(EntityRef<Cliente>);
+		OnCreated();
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idPagos", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+	public int idPagos
+	{
+		get
+		{
+			return this._idPagos;
+		}
+		set
+		{
+			if ((this._idPagos != value))
+			{
+				this.OnidPagosChanging(value);
+				this.SendPropertyChanging();
+				this._idPagos = value;
+				this.SendPropertyChanged("idPagos");
+				this.OnidPagosChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idCliente", DbType="Int NOT NULL")]
+	public int idCliente
+	{
+		get
+		{
+			return this._idCliente;
+		}
+		set
+		{
+			if ((this._idCliente != value))
+			{
+				if (this._Cliente.HasLoadedOrAssignedValue)
+				{
+					throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+				}
+				this.OnidClienteChanging(value);
+				this.SendPropertyChanging();
+				this._idCliente = value;
+				this.SendPropertyChanged("idCliente");
+				this.OnidClienteChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_p1", DbType="Int")]
+	public System.Nullable<int> p1
+	{
+		get
+		{
+			return this._p1;
+		}
+		set
+		{
+			if ((this._p1 != value))
+			{
+				this.Onp1Changing(value);
+				this.SendPropertyChanging();
+				this._p1 = value;
+				this.SendPropertyChanged("p1");
+				this.Onp1Changed();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_p2", DbType="Int")]
+	public System.Nullable<int> p2
+	{
+		get
+		{
+			return this._p2;
+		}
+		set
+		{
+			if ((this._p2 != value))
+			{
+				this.Onp2Changing(value);
+				this.SendPropertyChanging();
+				this._p2 = value;
+				this.SendPropertyChanged("p2");
+				this.Onp2Changed();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_p3", DbType="Int")]
+	public System.Nullable<int> p3
+	{
+		get
+		{
+			return this._p3;
+		}
+		set
+		{
+			if ((this._p3 != value))
+			{
+				this.Onp3Changing(value);
+				this.SendPropertyChanging();
+				this._p3 = value;
+				this.SendPropertyChanged("p3");
+				this.Onp3Changed();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_p4", DbType="Int")]
+	public System.Nullable<int> p4
+	{
+		get
+		{
+			return this._p4;
+		}
+		set
+		{
+			if ((this._p4 != value))
+			{
+				this.Onp4Changing(value);
+				this.SendPropertyChanging();
+				this._p4 = value;
+				this.SendPropertyChanged("p4");
+				this.Onp4Changed();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_p5", DbType="Int")]
+	public System.Nullable<int> p5
+	{
+		get
+		{
+			return this._p5;
+		}
+		set
+		{
+			if ((this._p5 != value))
+			{
+				this.Onp5Changing(value);
+				this.SendPropertyChanging();
+				this._p5 = value;
+				this.SendPropertyChanged("p5");
+				this.Onp5Changed();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_p6", DbType="Int")]
+	public System.Nullable<int> p6
+	{
+		get
+		{
+			return this._p6;
+		}
+		set
+		{
+			if ((this._p6 != value))
+			{
+				this.Onp6Changing(value);
+				this.SendPropertyChanging();
+				this._p6 = value;
+				this.SendPropertyChanged("p6");
+				this.Onp6Changed();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_p7", DbType="Int")]
+	public System.Nullable<int> p7
+	{
+		get
+		{
+			return this._p7;
+		}
+		set
+		{
+			if ((this._p7 != value))
+			{
+				this.Onp7Changing(value);
+				this.SendPropertyChanging();
+				this._p7 = value;
+				this.SendPropertyChanged("p7");
+				this.Onp7Changed();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_p8", DbType="Int")]
+	public System.Nullable<int> p8
+	{
+		get
+		{
+			return this._p8;
+		}
+		set
+		{
+			if ((this._p8 != value))
+			{
+				this.Onp8Changing(value);
+				this.SendPropertyChanging();
+				this._p8 = value;
+				this.SendPropertyChanged("p8");
+				this.Onp8Changed();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_p9", DbType="Int")]
+	public System.Nullable<int> p9
+	{
+		get
+		{
+			return this._p9;
+		}
+		set
+		{
+			if ((this._p9 != value))
+			{
+				this.Onp9Changing(value);
+				this.SendPropertyChanging();
+				this._p9 = value;
+				this.SendPropertyChanged("p9");
+				this.Onp9Changed();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_p10", DbType="Int")]
+	public System.Nullable<int> p10
+	{
+		get
+		{
+			return this._p10;
+		}
+		set
+		{
+			if ((this._p10 != value))
+			{
+				this.Onp10Changing(value);
+				this.SendPropertyChanging();
+				this._p10 = value;
+				this.SendPropertyChanged("p10");
+				this.Onp10Changed();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_p11", DbType="Int")]
+	public System.Nullable<int> p11
+	{
+		get
+		{
+			return this._p11;
+		}
+		set
+		{
+			if ((this._p11 != value))
+			{
+				this.Onp11Changing(value);
+				this.SendPropertyChanging();
+				this._p11 = value;
+				this.SendPropertyChanged("p11");
+				this.Onp11Changed();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_p12", DbType="Int")]
+	public System.Nullable<int> p12
+	{
+		get
+		{
+			return this._p12;
+		}
+		set
+		{
+			if ((this._p12 != value))
+			{
+				this.Onp12Changing(value);
+				this.SendPropertyChanging();
+				this._p12 = value;
+				this.SendPropertyChanged("p12");
+				this.Onp12Changed();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_p13", DbType="Int")]
+	public System.Nullable<int> p13
+	{
+		get
+		{
+			return this._p13;
+		}
+		set
+		{
+			if ((this._p13 != value))
+			{
+				this.Onp13Changing(value);
+				this.SendPropertyChanging();
+				this._p13 = value;
+				this.SendPropertyChanged("p13");
+				this.Onp13Changed();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_p14", DbType="Int")]
+	public System.Nullable<int> p14
+	{
+		get
+		{
+			return this._p14;
+		}
+		set
+		{
+			if ((this._p14 != value))
+			{
+				this.Onp14Changing(value);
+				this.SendPropertyChanging();
+				this._p14 = value;
+				this.SendPropertyChanged("p14");
+				this.Onp14Changed();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_p15", DbType="Int")]
+	public System.Nullable<int> p15
+	{
+		get
+		{
+			return this._p15;
+		}
+		set
+		{
+			if ((this._p15 != value))
+			{
+				this.Onp15Changing(value);
+				this.SendPropertyChanging();
+				this._p15 = value;
+				this.SendPropertyChanged("p15");
+				this.Onp15Changed();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_p16", DbType="Int")]
+	public System.Nullable<int> p16
+	{
+		get
+		{
+			return this._p16;
+		}
+		set
+		{
+			if ((this._p16 != value))
+			{
+				this.Onp16Changing(value);
+				this.SendPropertyChanging();
+				this._p16 = value;
+				this.SendPropertyChanged("p16");
+				this.Onp16Changed();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_p17", DbType="Int")]
+	public System.Nullable<int> p17
+	{
+		get
+		{
+			return this._p17;
+		}
+		set
+		{
+			if ((this._p17 != value))
+			{
+				this.Onp17Changing(value);
+				this.SendPropertyChanging();
+				this._p17 = value;
+				this.SendPropertyChanged("p17");
+				this.Onp17Changed();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_p18", DbType="Int")]
+	public System.Nullable<int> p18
+	{
+		get
+		{
+			return this._p18;
+		}
+		set
+		{
+			if ((this._p18 != value))
+			{
+				this.Onp18Changing(value);
+				this.SendPropertyChanging();
+				this._p18 = value;
+				this.SendPropertyChanged("p18");
+				this.Onp18Changed();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_p19", DbType="Int")]
+	public System.Nullable<int> p19
+	{
+		get
+		{
+			return this._p19;
+		}
+		set
+		{
+			if ((this._p19 != value))
+			{
+				this.Onp19Changing(value);
+				this.SendPropertyChanging();
+				this._p19 = value;
+				this.SendPropertyChanged("p19");
+				this.Onp19Changed();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_p20", DbType="Int")]
+	public System.Nullable<int> p20
+	{
+		get
+		{
+			return this._p20;
+		}
+		set
+		{
+			if ((this._p20 != value))
+			{
+				this.Onp20Changing(value);
+				this.SendPropertyChanging();
+				this._p20 = value;
+				this.SendPropertyChanged("p20");
+				this.Onp20Changed();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_p21", DbType="Int")]
+	public System.Nullable<int> p21
+	{
+		get
+		{
+			return this._p21;
+		}
+		set
+		{
+			if ((this._p21 != value))
+			{
+				this.Onp21Changing(value);
+				this.SendPropertyChanging();
+				this._p21 = value;
+				this.SendPropertyChanged("p21");
+				this.Onp21Changed();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_p22", DbType="Int")]
+	public System.Nullable<int> p22
+	{
+		get
+		{
+			return this._p22;
+		}
+		set
+		{
+			if ((this._p22 != value))
+			{
+				this.Onp22Changing(value);
+				this.SendPropertyChanging();
+				this._p22 = value;
+				this.SendPropertyChanged("p22");
+				this.Onp22Changed();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_p23", DbType="Int")]
+	public System.Nullable<int> p23
+	{
+		get
+		{
+			return this._p23;
+		}
+		set
+		{
+			if ((this._p23 != value))
+			{
+				this.Onp23Changing(value);
+				this.SendPropertyChanging();
+				this._p23 = value;
+				this.SendPropertyChanged("p23");
+				this.Onp23Changed();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_p24", DbType="Int")]
+	public System.Nullable<int> p24
+	{
+		get
+		{
+			return this._p24;
+		}
+		set
+		{
+			if ((this._p24 != value))
+			{
+				this.Onp24Changing(value);
+				this.SendPropertyChanging();
+				this._p24 = value;
+				this.SendPropertyChanged("p24");
+				this.Onp24Changed();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_p25", DbType="Int")]
+	public System.Nullable<int> p25
+	{
+		get
+		{
+			return this._p25;
+		}
+		set
+		{
+			if ((this._p25 != value))
+			{
+				this.Onp25Changing(value);
+				this.SendPropertyChanging();
+				this._p25 = value;
+				this.SendPropertyChanged("p25");
+				this.Onp25Changed();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Cliente_pagos", Storage="_Cliente", ThisKey="idCliente", OtherKey="idCliente", IsForeignKey=true)]
+	public Cliente Cliente
+	{
+		get
+		{
+			return this._Cliente.Entity;
+		}
+		set
+		{
+			Cliente previousValue = this._Cliente.Entity;
+			if (((previousValue != value) 
+						|| (this._Cliente.HasLoadedOrAssignedValue == false)))
+			{
+				this.SendPropertyChanging();
+				if ((previousValue != null))
+				{
+					this._Cliente.Entity = null;
+					previousValue.pagos.Remove(this);
+				}
+				this._Cliente.Entity = value;
+				if ((value != null))
+				{
+					value.pagos.Add(this);
+					this._idCliente = value.idCliente;
+				}
+				else
+				{
+					this._idCliente = default(int);
+				}
+				this.SendPropertyChanged("Cliente");
+			}
+		}
+	}
+	
+	public event PropertyChangingEventHandler PropertyChanging;
+	
+	public event PropertyChangedEventHandler PropertyChanged;
+	
+	protected virtual void SendPropertyChanging()
+	{
+		if ((this.PropertyChanging != null))
+		{
+			this.PropertyChanging(this, emptyChangingEventArgs);
+		}
+	}
+	
+	protected virtual void SendPropertyChanged(String propertyName)
+	{
+		if ((this.PropertyChanged != null))
+		{
+			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+		}
 	}
 }
 

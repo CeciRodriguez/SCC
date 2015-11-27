@@ -9,14 +9,11 @@
     <link href="../Bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
     <link href="../Styles/menu.css" rel="stylesheet" type="text/css" />
     <link href="../Styles/styles.css" rel="stylesheet" type="text/css" />
-    <link href="../Styles/jquery-ui.css" rel="stylesheet" type="text/css" />
     <script src="../js/jquery-latest.min.js" type="text/javascript"></script>
     <script src="../js/script.js" type="text/javascript"></script>
     <script src="../js/Cliente.js" type="text/javascript"></script>
-    <script src="../js/script.js" type="text/javascript"></script>
     <script src="../js/jquery-ui.js" type="text/javascript"></script>
-    <script src="../js/calendario.js" type="text/javascript"></script>
-    <script src="../js/jquery.js" type="text/javascript"></script>
+    <script src="../js/script.js" type="text/javascript"></script>
     <script src="../js/DataTable.js" type="text/javascript"></script>
     <script src="../js/dataTable-es.js" type="text/javascript"></script>
     <script src="../js/jquery.dataTables.min.js" type="text/javascript"></script>
@@ -289,7 +286,7 @@
 	    $(this).removeClass("ui-state-hover");
 	}
 );
-    </script>
+</script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="Server">
     <div>
@@ -300,7 +297,7 @@
                         <ul>
                             <li><a href="Cliente.aspx">Registro</a></li>
                             <li><a href="ListaClientes.aspx">Ver clientes</a></li>
-                            <li><a href="EStadoCuenta.aspx">Estados de cuenta</a></li>
+                            <li><a href="ListaClientesE.aspx">Estados de cuenta</a></li>
                         </ul>
                     </li>
                     <li><a href='#'>Créditos</a>
@@ -313,19 +310,113 @@
                             </li>
                         </ul>
                     </li>
-                    <li><a href='#'>Balance</a>
+                    <li><a href='#'>Documentos</a>
                         <ul>
-                            <li><a href='#'>General</a></li>
-                            <li><a href='#'>Mensual</a></li>
+                            <li><a href="../ReporteSCC/ListaClienteSCC.aspx">Clientes</a></li>
+                            <li><a href="../Credito/Formatos.aspx">Garantías y Pagaré</a></li>
                         </ul>
                     </li>
-                    <li><a href='#'>Contactos</a></li>
+                    <li><a href="../Balance/Balance.aspx">Balance</a></li>
                     <li><a href="#" id="dialog-link" class="ui-icon-calculator"><span class="ui-icon-calculator">
                     </span>
                         <img src="../Imagenes/calculadora.png" width="20px" />
                     </a></li>
                 </ul>
             </div>
+            <table style="width: 100%;" id="tabla">
+                <br />
+                <tr>
+                    <td align="right">
+                        <asp:Label ID="lblIdCliente" runat="server" CssClass="hide"></asp:Label>
+                        Nombre:
+                    </td>
+                    <td>
+                        <asp:TextBox ID="txt_name" runat="server" CssClass="form-control" Height="20px" MaxLength="50"
+                            Width="149px" disabled="true"></asp:TextBox>
+                    </td>
+                    <td>
+                        <asp:TextBox ID="txt_app" runat="server" CssClass="form-control" Height="20px" MaxLength="50"
+                            Width="149px" disabled="true"></asp:TextBox>
+                    </td>
+                    <td>
+                        <asp:TextBox ID="txt_apm" runat="server" CssClass="form-control" Height="20px" MaxLength="50"
+                            Width="149px" disabled="true"></asp:TextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right">
+                        <br />
+                        Cantidad prestada: $
+                    </td>
+                    <td>
+                        <br />
+                        <asp:TextBox ID="txt_cSolicitada" runat="server" CssClass="form-control" Height="20px"
+                            MaxLength="50" Width="149px" disabled="true"></asp:TextBox>
+                        <asp:Label ID="lbl_cSolicitada" runat="server" CssClass="colorMje"></asp:Label>
+                    </td>
+                    <td align="right">
+                        <br />
+                        Modalidad del crédito:
+                    </td>
+                    <td>
+                        <br />
+                        <asp:DropDownList ID="txt_modalidad" runat="server" CssClass="form-control2" DataSourceID="SqlDataSource3"
+                            DataTextField="descripcion" DataValueField="idModalidad" disabled="true">
+                        </asp:DropDownList>
+                        <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:sccConnectionString %>"
+                            SelectCommand="SELECT [idModalidad], [descripcion] FROM [modalidad]"></asp:SqlDataSource>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right">
+                        <asp:Label ID="Label3" runat="server" CssClass="hide"></asp:Label>
+                        <br />
+                        Fecha inicio:
+                    </td>
+                    <td>
+                        <br />
+                        <asp:TextBox ID="txt_fInicio" runat="server" CssClass="form-control" Height="20px"
+                            MaxLength="50" Width="149px" disabled="true"></asp:TextBox>
+                    </td>
+                    <td align="right">
+                        <br />
+                        Fecha fin:
+                    </td>
+                    <td>
+                        <br />
+                        <asp:TextBox ID="txt_fFin" runat="server" CssClass="form-control" Height="20px" MaxLength="50"
+                            Width="149px" disabled="true"></asp:TextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right">
+                    </td>
+                    <td>
+                    </td>
+                    <td align="right">
+                        <br />
+                        Estatus:
+                    </td>
+                    <td>
+                        <br />
+                        <asp:TextBox ID="txt_estatus" runat="server" CssClass="form-control" Height="20px"
+                            MaxLength="50" Width="149px" disabled="true"></asp:TextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right">
+                    </td>
+                    <td>
+                    </td>
+                    <td class="style1">
+                            <asp:Label ID="lbl_Mensaje" runat="server"></asp:Label>
+                        </td>
+                </tr>
+            </table>
+            <center>
+            <asp:Button ID="btn_Agregar" runat="server" CssClass="btn btn-primary colorMje" 
+            OnClick="btn_Estado_Click" Text="Imprimir estado" />
+            </center>
         </asp:Panel>
     </div>
     <!-- ui-dialog -->

@@ -1,11 +1,19 @@
 ﻿.panel
 {
     margin: -21px -180px 0px -180px;
-    height: 900px;
+    height: 650px;
 }
 
 .colorMje
 {
 color:Red;    
+}
+
+.texto
+{
+  font-size: medium;
+  font-family: @Arial Unicode MS;
+  font-style:normal;
+  float:inherit;
 }
 
